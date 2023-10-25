@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+.intro-container {
+    cursor: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.intro-content {
+    cursor: none;
+    max-width: 600px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+    margin-top: 0;
+    color: rgb(85, 86, 88);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+p {
+    color: #777;
+    font-size: 18px;
+    margin: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+    cursor: none;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cursor-style {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgb(85, 86, 88);
+    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Center the cursor to the mouse position */
+    pointer-events: none; /* Ensure the cursor doesn't interfere with other elements */
+    z-index: 9999;
+    background: transparent;
+    transition: width 0.3s, height 0.3s; /* Smooth transition for size change */
 }
+
+.cursor-style::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(85, 86, 88);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button:hover {
+    cursor: none;
+}
+
+button:hover ~ .cursor-style {
+    width: 40px;
+    height: 40px;
+}
+
+
