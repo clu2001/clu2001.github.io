@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://clu2001.github.io/clu2001.github.io",
+  "homepage": "https://clu2001.github.io",
   "private": true,
   "dependencies": {
     "@react-three/fiber": "^8.13.3",
