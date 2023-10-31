@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/clu2001.github.io/static/css/main.44559754.css",
-    "main.js": "/clu2001.github.io/static/js/main.48eb03b7.js",
-    "static/js/787.28cb0dcd.chunk.js": "/clu2001.github.io/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/clu2001.github.io/index.html",
-    "main.44559754.css.map": "/clu2001.github.io/static/css/main.44559754.css.map",
-    "main.48eb03b7.js.map": "/clu2001.github.io/static/js/main.48eb03b7.js.map",
-    "787.28cb0dcd.chunk.js.map": "/clu2001.github.io/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/static/css/main.44559754.css",
+    "main.js": "/static/js/main.add62d30.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/index.html",
+    "main.44559754.css.map": "/static/css/main.44559754.css.map",
+    "main.add62d30.js.map": "/static/js/main.add62d30.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.44559754.css",
-    "static/js/main.48eb03b7.js"
+    "static/js/main.add62d30.js"
   ]
 }
