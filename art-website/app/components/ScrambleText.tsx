@@ -35,27 +35,31 @@ export default function ScrambleText({
     }
 
     let iteration = 0;
-    const speed = 50; // milliseconds per frame
+    const speed = 20; // milliseconds per frame
 
     if (animationRef.current) {
       clearInterval(animationRef.current);
     }
 
     animationRef.current = setInterval(() => {
-      setDisplayText((prev) => {
+      setDisplayText(() => {
         return text
           .split('')
           .map((char, index) => {
             if (char === ' ') return ' ';
+            
+            // Reveal characters progressively from left to right
             if (index < iteration) {
               return text[index];
             }
+            
+            // Scramble unrevealed characters
             return chars[Math.floor(Math.random() * chars.length)];
           })
           .join('');
       });
 
-      iteration += 1 / 3; // Controls how fast letters resolve
+      iteration += 1 / 3; // Controls how fast letters reveal
 
       if (iteration >= text.length) {
         if (animationRef.current) {
@@ -70,7 +74,7 @@ export default function ScrambleText({
         clearInterval(animationRef.current);
       }
     };
-  }, [isHovering, text]);
+  }, [isHovering, text, chars]);
 
   const content = (
     <span

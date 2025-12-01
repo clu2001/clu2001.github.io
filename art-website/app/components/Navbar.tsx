@@ -11,8 +11,8 @@ export default function Navbar() {
   const [logoHover, setLogoHover] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-15 z-50 w-full bg-transparent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-12">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
@@ -22,35 +22,27 @@ export default function Navbar() {
               onMouseEnter={() => setLogoHover(true)}
               onMouseLeave={() => setLogoHover(false)}
             >
-              <ScrambleText text="Logo" isHovering={logoHover} />
+              <ScrambleText text="jemisdog" isHovering={logoHover} />
             </a>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8">
             <a
-              href="#home"
-              className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors"
-              onMouseEnter={() => setHomeHover(true)}
-              onMouseLeave={() => setHomeHover(false)}
-            >
-              <ScrambleText text="Home" isHovering={homeHover} />
-            </a>
-            <a
-              href="#about"
+              href="#portfolio"
               className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors"
               onMouseEnter={() => setAboutHover(true)}
               onMouseLeave={() => setAboutHover(false)}
             >
-              <ScrambleText text="About" isHovering={aboutHover} />
+              <ScrambleText text="portfolio" isHovering={aboutHover} />
             </a>
             <a
-              href="#work"
+              href="#ocs"
               className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors"
               onMouseEnter={() => setWorkHover(true)}
               onMouseLeave={() => setWorkHover(false)}
             >
-              <ScrambleText text="Work" isHovering={workHover} />
+              <ScrambleText text="ocs" isHovering={workHover} />
             </a>
             <a
               href="#contact"
@@ -58,7 +50,7 @@ export default function Navbar() {
               onMouseEnter={() => setContactHover(true)}
               onMouseLeave={() => setContactHover(false)}
             >
-              <ScrambleText text="Contact" isHovering={contactHover} />
+              <ScrambleText text="contact me!" isHovering={contactHover} />
             </a>
           </div>
 
