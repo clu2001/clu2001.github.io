@@ -1,7 +1,0 @@
-{
-  "buildCommand": "cd art-website && npm run build",
-  "devCommand": "cd art-website && npm run dev",
-  "installCommand": "cd art-website && npm install",
-  "outputDirectory": "art-website/.next"
-}
-
