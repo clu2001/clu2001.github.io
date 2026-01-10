@@ -30,7 +30,7 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
           <div className="flex-shrink-0">
             <Link 
               href="/" 
-              className="text-2xl font-bold text-gray-900 dark:text-white"
+              className="text-2xl font-bold text-white"
               onMouseEnter={() => setLogoHover(true)}
               onMouseLeave={() => setLogoHover(false)}
             >
@@ -48,7 +48,7 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
             >
               <Link
                 href="/portfolio"
-                className={`text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors ${
+                className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors ${
                   isPortfolioPage ? 'underline decoration-1 underline-offset-4' : ''
                 }`}
               >
@@ -58,7 +58,7 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
               {/* Dropdown filters - only show on portfolio page */}
               {isPortfolioPage && portfolioHover && (
                 <div className="absolute top-full left-0 mt-2 z-50">
-                  <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-md shadow-lg py-2 px-3 min-w-[150px]">
+                  <div className="bg-black/80 backdrop-blur-md border border-gray-700 rounded-md shadow-lg py-2 px-3 min-w-[150px]">
                     {categories.map((category) => (
                       <button
                         key={category}
@@ -66,8 +66,8 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
                         className={`
                           block w-full text-left px-3 py-2 text-sm lowercase tracking-wider transition-colors rounded
                           ${selectedCategory === category 
-                            ? 'text-black dark:text-white bg-gray-100 dark:bg-gray-900 font-medium' 
-                            : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-900'}
+                            ? 'text-white bg-gray-800 font-medium' 
+                            : 'text-gray-300 hover:text-white hover:bg-gray-800'}
                         `}
                       >
                         {category}
@@ -78,29 +78,29 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
               )}
             </div>
             
-            <a
-              href="#ocs"
-              className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+            <Link
+              href="/ocs"
+              className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors"
               onMouseEnter={() => setWorkHover(true)}
               onMouseLeave={() => setWorkHover(false)}
             >
               <ScrambleText text="ocs" isHovering={workHover} />
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+            </Link>
+            <Link
+              href="/contact"
+              className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors"
               onMouseEnter={() => setContactHover(true)}
               onMouseLeave={() => setContactHover(false)}
             >
               <ScrambleText text="contact me!" isHovering={contactHover} />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               type="button"
-              className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-300"
               aria-label="Toggle menu"
             >
               <svg

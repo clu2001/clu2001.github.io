@@ -28,7 +28,7 @@ const artworks = [
   {
     id: 3,
     src: '/bruh (1).png',
-    title: 'Bruh',
+    title: 'You Are My Everything',
     category: 'digital',
     width: 1800,
     height: 2200,
@@ -68,7 +68,7 @@ const artworks = [
   {
     id: 8,
     src: '/Illustration4.png',
-    title: 'Illustration 4',
+    title: 'Jack Wallace',
     category: 'digital',
     width: 1500,
     height: 1600,
@@ -84,7 +84,7 @@ const artworks = [
   {
     id: 10,
     src: '/pool all together.png',
-    title: 'Pool All Together',
+    title: 'Pool & Boy & Girl',
     category: 'digital',
     width: 1600,
     height: 1800,
@@ -148,7 +148,7 @@ const artworks = [
   {
     id: 18,
     src: '/erm6.png',
-    title: 'Erm6',
+    title: 'Did you mean that?',
     category: 'digital',
     width: 1600,
     height: 2400,
@@ -159,7 +159,7 @@ const artworks = [
     title: 'Bird',
     category: 'digital',
     width: 2400,
-    height: 2800,
+    height: 3600,
   },
 ];
 
@@ -221,7 +221,7 @@ export default function Portfolio() {
                   
                   {/* Frosted Overlay on Hover */}
                   <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover:bg-white/30 group-hover:backdrop-blur-sm dark:group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
-                    <h3 className="text-lg font-medium text-black dark:text-white px-4 text-center">
+                    <h3 className="text-lg font-medium text-white px-4 text-center">
                       {artwork.title}
                     </h3>
                   </div>
