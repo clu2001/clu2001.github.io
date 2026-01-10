@@ -52,8 +52,9 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
       </button>
 
       <div
-        className="relative max-w-7xl max-h-[90vh] w-full"
+        className="relative max-w-7xl max-h-[90vh] w-full select-none"
         onClick={(e) => e.stopPropagation()}
+        onContextMenu={(e) => e.preventDefault()}
       >
         {/* Image */}
         <div className="relative w-full h-full flex items-center justify-center">
@@ -62,10 +63,14 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
             alt={image.title}
             width={image.width}
             height={image.height}
-            className="max-w-full max-h-[85vh] w-auto h-auto object-contain"
+            className="max-w-full max-h-[85vh] w-auto h-auto object-contain pointer-events-none"
             quality={100}
             priority
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
           />
+          {/* Invisible overlay to block direct image interaction */}
+          <div className="absolute inset-0 z-10" onClick={(e) => e.stopPropagation()} />
         </div>
 
         {/* Title */}

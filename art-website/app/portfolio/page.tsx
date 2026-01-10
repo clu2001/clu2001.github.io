@@ -6,35 +6,164 @@ import Navbar from '../components/Navbar';
 import ImageModal from '../components/ImageModal';
 
 // Your artwork data - you'll add your actual images here
+// Recommended: Optimize images to ~1200-1500px wide, 72 DPI, saved at 80-90% quality
+// This maintains visual quality while protecting high-res originals
 const artworks = [
   {
     id: 1,
-    src: '/erm6.png', // Replace with your actual image paths
-    title: 'Untitled #1',
+    src: '/angel.png',
+    title: 'Angel',
     category: 'digital',
-    width: 1920,
-    height: 3000,
+    width: 1600,
+    height: 1800,
   },
   {
     id: 2,
-    src: '/erm6.png',
-    title: 'Untitled #2',
-    category: 'painting',
-    width: 1920,
-    height: 1080,
+    src: '/boy.png',
+    title: 'Boy',
+    category: 'digital',
+    width: 1400,
+    height: 1400,
   },
   {
     id: 3,
-    src: '/erm6.png',
-    title: 'Untitled #3',
+    src: '/bruh (1).png',
+    title: 'Bruh',
     category: 'digital',
-    width: 1200,
+    width: 1800,
+    height: 2200,
+  },
+  {
+    id: 4,
+    src: '/childe.png',
+    title: 'Childe',
+    category: 'digital',
+    width: 1500,
+    height: 1500,
+  },
+  {
+    id: 5,
+    src: '/eyes.png',
+    title: 'Eyes',
+    category: 'digital',
+    width: 1600,
+    height: 1400,
+  },
+  {
+    id: 6,
+    src: '/fisherman2(1).png',
+    title: 'Fisherman',
+    category: 'digital',
+    width: 1700,
+    height: 2000,
+  },
+  {
+    id: 7,
+    src: '/girl.png',
+    title: 'Girl',
+    category: 'digital',
+    width: 2000,
+    height: 2400,
+  },
+  {
+    id: 8,
+    src: '/Illustration4.png',
+    title: 'Illustration 4',
+    category: 'digital',
+    width: 1500,
     height: 1600,
   },
-  // Add more artworks here
+  {
+    id: 9,
+    src: '/look -g.png',
+    title: 'Look',
+    category: 'digital',
+    width: 1800,
+    height: 2200,
+  },
+  {
+    id: 10,
+    src: '/pool all together.png',
+    title: 'Pool All Together',
+    category: 'digital',
+    width: 1600,
+    height: 1800,
+  },
+  {
+    id: 11,
+    src: '/pool.png',
+    title: 'Pool',
+    category: 'digital',
+    width: 1400,
+    height: 1600,
+  },
+  {
+    id: 12,
+    src: '/summer.png',
+    title: 'Summer',
+    category: 'digital',
+    width: 1900,
+    height: 2300,
+  },
+  {
+    id: 13,
+    src: '/thumbnail 1 finished.png',
+    title: 'Thumbnail 1',
+    category: 'digital',
+    width: 2200,
+    height: 2600,
+  },
+  {
+    id: 14,
+    src: '/thumbnail 2 finished.png',
+    title: 'Thumbnail 2',
+    category: 'digital',
+    width: 1500,
+    height: 1500,
+  },
+  {
+    id: 15,
+    src: '/thumbnail 3 finished.png',
+    title: 'Thumbnail 3',
+    category: 'digital',
+    width: 1600,
+    height: 1400,
+  },
+  {
+    id: 16,
+    src: '/thumbnail 4 finished.png',
+    title: 'Thumbnail 4',
+    category: 'digital',
+    width: 1500,
+    height: 1700,
+  },
+  {
+    id: 17,
+    src: '/you are my ghost.png',
+    title: 'You Are My Ghost',
+    category: 'digital',
+    width: 2000,
+    height: 2500,
+  },
+  {
+    id: 18,
+    src: '/erm6.png',
+    title: 'Erm6',
+    category: 'digital',
+    width: 1600,
+    height: 2400,
+  },
+  {
+    id: 19,
+    src: '/bird.PNG',
+    title: 'Bird',
+    category: 'digital',
+    width: 2400,
+    height: 2800,
+  },
 ];
 
-const categories = ['all', 'digital', 'painting', 'drawing', 'mixed media'];
+const categories = ['all', 'prints', 'stickers'];
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -45,7 +174,7 @@ export default function Portfolio() {
     : artworks.filter(art => art.category === selectedCategory);
 
   return (
-    <div className="relative font-sans">
+    <div className="relative font-sans" onContextMenu={(e) => e.preventDefault()}>
       <Navbar 
         onFilterChange={setSelectedCategory}
         selectedCategory={selectedCategory}
@@ -73,8 +202,9 @@ export default function Portfolio() {
             {filteredArtworks.map((artwork) => (
               <div
                 key={artwork.id}
-                className="relative group cursor-pointer mb-4 break-inside-avoid"
+                className="relative group cursor-pointer mb-4 break-inside-avoid select-none"
                 onClick={() => setSelectedImage(artwork)}
+                onContextMenu={(e) => e.preventDefault()}
               >
                 {/* Image */}
                 <div className="relative overflow-hidden bg-gray-100 dark:bg-gray-900">
@@ -83,16 +213,21 @@ export default function Portfolio() {
                     alt={artwork.title}
                     width={artwork.width}
                     height={artwork.height}
-                    className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-auto transition-transform duration-300 group-hover:scale-105 pointer-events-none"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                   
                   {/* Frosted Overlay on Hover */}
-                  <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover:bg-white/30 group-hover:backdrop-blur-sm dark:group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover:bg-white/30 group-hover:backdrop-blur-sm dark:group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
                     <h3 className="text-lg font-medium text-black dark:text-white px-4 text-center">
                       {artwork.title}
                     </h3>
                   </div>
+                  
+                  {/* Invisible overlay to block direct image interaction */}
+                  <div className="absolute inset-0 z-10" />
                 </div>
               </div>
             ))}
