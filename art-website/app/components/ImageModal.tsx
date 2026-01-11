@@ -57,7 +57,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
         onContextMenu={(e) => e.preventDefault()}
       >
         {/* Image */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center bg-white p-4 rounded-lg">
           <Image
             src={image.src}
             alt={image.title}

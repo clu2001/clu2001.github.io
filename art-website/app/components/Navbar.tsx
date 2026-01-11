@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ScrambleText from './ScrambleText';
 
-const categories = ['all', 'digital', 'painting', 'drawing', 'mixed media'];
+const categories = ['all', 'prints', 'stickers'];
 
 interface NavbarProps {
   onFilterChange?: (category: string) => void;
@@ -42,13 +42,13 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
           <div className="hidden md:flex space-x-8 items-center">
             {/* Portfolio with dropdown */}
             <div 
-              className="relative"
+              className="relative group"
               onMouseEnter={() => setPortfolioHover(true)}
               onMouseLeave={() => setPortfolioHover(false)}
             >
               <Link
                 href="/portfolio"
-                className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors ${
+                className={`inline-block text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors ${
                   isPortfolioPage ? 'underline decoration-1 underline-offset-4' : ''
                 }`}
               >
@@ -56,17 +56,17 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
               </Link>
               
               {/* Dropdown filters - only show on portfolio page */}
-              {isPortfolioPage && portfolioHover && (
-                <div className="absolute top-full left-0 mt-2 z-50">
-                  <div className="bg-black/80 backdrop-blur-md border border-gray-700 rounded-md shadow-lg py-2 px-3 min-w-[150px]">
+              {isPortfolioPage && (
+                <div className="absolute top-full left-0 pt-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="bg-black/90 backdrop-blur-md border border-gray-700 rounded-md shadow-lg py-2 px-3 min-w-[150px]">
                     {categories.map((category) => (
                       <button
                         key={category}
                         onClick={() => onFilterChange?.(category)}
                         className={`
-                          block w-full text-left px-3 py-2 text-sm lowercase tracking-wider transition-colors rounded
+                          block w-full text-left px-4 py-2.5 text-sm lowercase tracking-wider transition-colors rounded
                           ${selectedCategory === category 
-                            ? 'text-white bg-gray-800 font-medium' 
+                            ? 'text-white bg-gray-700 font-medium' 
                             : 'text-gray-300 hover:text-white hover:bg-gray-800'}
                         `}
                       >
