@@ -171,7 +171,7 @@ const artworks = [
   },
   {
     id: 21,
-    src: '/sticker lads.PNG',
+    src: '/sticker lads.png',
     title: 'LADs sticker',
     category: 'stickers',
     width: 2400,
@@ -179,7 +179,7 @@ const artworks = [
   },
   {
     id: 22,
-    src: '/roo bits.PNG',
+    src: '/roo bits.png',
     title: 'Panda fire',
     category: 'stickers',
     width: 2400,
@@ -187,7 +187,7 @@ const artworks = [
   },
   {
     id: 23,
-    src: '/sticker - caleb 1.PNG',
+    src: '/sticker - caleb 1.png',
     title: 'Caleb sticker',
     category: 'stickers',
     width: 2400,
@@ -195,7 +195,7 @@ const artworks = [
   },
   {
     id: 24,
-    src: '/sticker - zayne 1.PNG',
+    src: '/sticker - zayne 1.png',
     title: 'Zayne sticker',
     category: 'stickers',
     width: 2400,
@@ -203,8 +203,24 @@ const artworks = [
   },
   {
     id: 25,
-    src: '/forget me not.PNG',
+    src: '/forget me not.png',
     title: 'Forget me not',
+    category: 'prints',
+    width: 2400,
+    height: 3600,
+  },
+  {
+    id: 26,
+    src: '/ivantill chess.png',
+    title: 'Ivan & Till Chess',
+    category: 'prints',
+    width: 2400,
+    height: 3600,
+  },
+  {
+    id: 27,
+    src: '/ok sure.png',
+    title: 'American',
     category: 'prints',
     width: 2400,
     height: 3600,
