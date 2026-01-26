@@ -40,7 +40,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-md flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] bg-black flex items-center justify-center p-4"
       onClick={handleBackdropClick}
     >
       <button
@@ -57,7 +57,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
         onContextMenu={(e) => e.preventDefault()}
       >
         {/* Image */}
-        <div className="relative w-full h-full flex items-center justify-center bg-white p-4 rounded-lg">
+        <div className="relative w-full h-full flex items-center justify-center bg-black p-4">
           <Image
             src={image.src}
             alt={image.title}

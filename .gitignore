@@ -1,0 +1,12 @@
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# Other common ignores
+*.log
+.env.local
+
