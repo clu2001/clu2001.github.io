@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import ImageModal from '../components/ImageModal';
 
+// Tiny gray 1×1 placeholder shown while each image loads
+const BLUR_PLACEHOLDER = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM0NDQ0NDQiLz48L3N2Zz4=';
+
 const artworks = [
   {
     id: 1,
@@ -219,9 +222,33 @@ const artworks = [
     width: 1200,
     height: 1800,
   },
+  {
+    id: 28,
+    src: '/convention.png',
+    title: 'Convention',
+    category: 'convention',
+    width: 920,
+    height: 944,
+  },
+  {
+    id: 29,
+    src: '/alien stage.png',
+    title: 'Alien Stage',
+    category: 'convention',
+    width: 968,
+    height: 1112,
+  },
+  {
+    id: 30,
+    src: '/the pitt keychains.png',
+    title: 'The Pitt',
+    category: 'convention',
+    width: 1006,
+    height: 1180,
+  },
 ];
 
-const categories = ['all', 'prints', 'stickers'];
+const categories = ['all', 'prints', 'stickers', 'convention'];
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -246,7 +273,7 @@ export default function Portfolio() {
           fill
           className="object-cover object-top blur-sm"
           priority
-          quality={100}
+          quality={30}
         />
         {/* Optional: Add overlay to reduce brightness */}
         <div className="absolute inset-0 bg-white/20 dark:bg-black/20"></div>
@@ -277,12 +304,14 @@ export default function Portfolio() {
                       alt={artwork.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
-                      sizes={artwork.featured 
-                        ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+                      sizes={artwork.featured
+                        ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 16vw"
                       }
-                      loading={index < 10 ? "eager" : "lazy"}
-                      priority={index < 6}
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
+                      loading={index < 8 ? "eager" : "lazy"}
+                      priority={index < 4}
                       draggable={false}
                       onContextMenu={(e) => e.preventDefault()}
                     />

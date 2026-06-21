@@ -14,7 +14,8 @@ export default function Home() {
           height={3000}
           className="w-full h-auto"
           priority
-          quality={100}
+          quality={85}
+          sizes="100vw"
         />
         {/* Content overlay positioned on top of the image */}
       </div>

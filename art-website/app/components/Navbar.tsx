@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ScrambleText from './ScrambleText';
 
-const categories = ['all', 'prints', 'stickers'];
+const categories = ['all', 'prints', 'stickers', 'convention'];
 
 interface NavbarProps {
   onFilterChange?: (category: string) => void;
@@ -18,7 +18,8 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
   const [workHover, setWorkHover] = useState(false);
   const [contactHover, setContactHover] = useState(false);
   const [logoHover, setLogoHover] = useState(false);
-  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const pathname = usePathname();
   const isPortfolioPage = pathname === '/portfolio';
 
@@ -28,8 +29,8 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-2xl font-bold text-white"
               onMouseEnter={() => setLogoHover(true)}
               onMouseLeave={() => setLogoHover(false)}
@@ -41,7 +42,7 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8 items-center">
             {/* Portfolio with dropdown */}
-            <div 
+            <div
               className="relative group"
               onMouseEnter={() => setPortfolioHover(true)}
               onMouseLeave={() => setPortfolioHover(false)}
@@ -54,7 +55,7 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
               >
                 <ScrambleText text="portfolio" isHovering={portfolioHover} />
               </Link>
-              
+
               {/* Dropdown filters - only show on portfolio page */}
               {isPortfolioPage && (
                 <div className="absolute top-full left-0 pt-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
@@ -65,8 +66,8 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
                         onClick={() => onFilterChange?.(category)}
                         className={`
                           block w-full text-left px-4 py-2.5 text-sm lowercase tracking-wider transition-colors rounded
-                          ${selectedCategory === category 
-                            ? 'text-white bg-gray-700 font-medium' 
+                          ${selectedCategory === category
+                            ? 'text-white bg-gray-700 font-medium'
                             : 'text-gray-300 hover:text-white hover:bg-gray-800'}
                         `}
                       >
@@ -77,7 +78,7 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
                 </div>
               )}
             </div>
-            
+
             <Link
               href="/ocs"
               className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors"
@@ -102,22 +103,92 @@ export default function Navbar({ onFilterChange, selectedCategory = 'all' }: Nav
               type="button"
               className="text-white hover:text-gray-300"
               aria-label="Toggle menu"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
+              {mobileMenuOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile menu panel */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-black/90 backdrop-blur-md border-t border-gray-700">
+          <div className="px-4 pt-2 pb-4 space-y-1">
+            <Link
+              href="/portfolio"
+              className={`block px-3 py-2 text-sm font-medium text-white hover:text-gray-300 transition-colors ${
+                isPortfolioPage ? 'underline decoration-1 underline-offset-4' : ''
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              portfolio
+            </Link>
+
+            {/* Category filters - only show on portfolio page */}
+            {isPortfolioPage && (
+              <div className="pl-6 space-y-1">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => {
+                      onFilterChange?.(category);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`
+                      block w-full text-left px-3 py-2 text-sm lowercase tracking-wider transition-colors rounded
+                      ${selectedCategory === category
+                        ? 'text-white bg-gray-700 font-medium'
+                        : 'text-gray-400 hover:text-white hover:bg-gray-800'}
+                    `}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <Link
+              href="/ocs"
+              className="block px-3 py-2 text-sm font-medium text-white hover:text-gray-300 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              ocs
+            </Link>
+            <Link
+              href="/contact"
+              className="block px-3 py-2 text-sm font-medium text-white hover:text-gray-300 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              contact me!
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
